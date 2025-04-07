@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { Category } from "@/types";
+import { useEffect, useState } from "react";
 
 interface MainNavProps {
     data: Category[];
@@ -13,12 +14,21 @@ interface MainNavProps {
 const MainNav:React.FC<MainNavProps> = (
     { data }
 ) => {
+    const [mounted, setMounted] = useState(false)
+    useEffect(()=>{
+        setMounted(true)
+    }, [])
+   
+
     const pathName = usePathname()
     const routes = data.map(route=>({
-        href: '/category/${route.id}',
+        href: `/category/${route.id}`,
         label: route.name,
         isActive: pathName === `/category/${route.id}`
     }))
+    if (!mounted) {
+        return null;
+    }
   return (
     <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
         {routes.map(route =>(

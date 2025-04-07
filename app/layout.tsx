@@ -8,14 +8,12 @@ const font = Urbanist({
   subsets: ["latin"],
 });
 
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
 export const metadata: Metadata = {
   title: "Store",
   description: "Store",
+  icons: {
+    icon: "/braids.svg"
+  }
 };
 
 export default function RootLayout({
@@ -26,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${font.className} antialiased`}
+        className={`${font.className} antialiased flex flex-col`}
       >
         <Navbar/>
         {children}
