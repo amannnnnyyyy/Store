@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { forwardRef } from "react"
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,7 +13,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
 }, ref)=>{
     return (
         <button
-            className={`py-2 px-4 rounded-md text-sm font-medium text-black cursor-pointer border ${className} ${disabled? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-300'}`}
+            className={cn(`
+                w-auto rounded-full bg-black border-transparent 
+                px-5 py-3 cursor-pointer border text-white 
+                font-semibold hover:opacity-75 transition
+                ${disabled? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-300'}`,className)}
             ref={ref}
             type={type}
             {...props}
