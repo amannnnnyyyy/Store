@@ -2,6 +2,7 @@
 
 import { Product } from "@/types"
 import Image from "next/image";
+import IconButton from "@/components/ui/icon-button";
 
 interface ProductCard {
     data: Product;
@@ -17,7 +18,13 @@ const ProductCard:React.FC<ProductCard> = ({
                 alt="image"
                 src={data?.images?.[0].url}
                 fill
+                className="aspect-square object-cover rounded-md"
             />
+            <div className="opacity-0 group-hover:opacity-100">
+                <div className="flex gap-x-6 justify-center">
+                    <IconButton/>
+                </div>
+            </div>
         </div>
     </div>
   )
